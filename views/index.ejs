@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -10,5 +11,42 @@
     <%//adapted the original index view for our site. %>
     <p>On this site, students can find information about various food options available on campus.</p>
     <a href="/food-spots/add">Add New Food Spot</a>
+
+
+  <div class="container mt-4">
+    <h2>Food Spots Near Campus</h2>
+
+    <table class = "table table-boardered table-stripped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Type of Food</th>
+          <th>Price Range</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if (foodSpotList.length === 0) { %>
+          <tr>
+            <td colspan="5">No food spots found.</td>
+          </tr>
+        <% } else { %>
+          <% for (let i = 0; i < foodSpotList.length; i++) { %>
+            <tr>
+              <td><%= foodSpotList[i].name %></td>
+              <td><%= foodSpotList[i].location %></td>
+              <td><%= foodSpotList[i].typeOfFood %></td>
+              <td><%= foodSpotList[i].priceRange %></td>
+              <td><%= foodSpotList[i].rating %></td>
+            </tr>
+          <% } %>
+        <% } %>
+      </tbody>
+
+
+    </table>
+  </div>
   </body>
 </html>
