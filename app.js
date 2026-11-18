@@ -1,3 +1,18 @@
+
+
+require('dotenv').config();
+
+var mongoose = require('mongoose');
+var db = require('./config/db');
+
+mongoose.connect(db.URI);
+var mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'MongoDB connection error:'));
+mongoDB.once('open', function() {
+  console.log('Connected to Campus Food Guide MongoDB database');
+});
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
