@@ -1,16 +1,19 @@
-
-
 require('dotenv').config();
 
 var mongoose = require('mongoose');
 var db = require('./config/db');
 
-mongoose.connect(db.URI);
-var mongoDB = mongoose.connection;
-mongoDB.on('error', console.error.bind(console, 'MongoDB connection error:'));
-mongoDB.once('open', function() {
-  console.log('Connected to Campus Food Guide MongoDB database');
-});
+if (db.URI) {
+  mongoose.connect(db.URI)
+    .then(function() {
+      console.log('Connected to Campus Food Guide MongoDB database');
+    })
+    .catch(function(err) {
+      console.error('MongoDB connection error:', err.message);
+    });
+} else {
+  console.log('MongoDB connection skipped for local testing');
+}
 
 
 var createError = require('http-errors');
@@ -21,6 +24,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var foodSpotsRouter = require('./routes/foodspots');
 
 var app = express();
 
@@ -36,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/foodspots', foodSpotsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
