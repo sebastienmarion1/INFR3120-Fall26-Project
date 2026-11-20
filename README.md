@@ -27,7 +27,6 @@ Zuriel Tolibas: Created the homepage listing table and connected the listing to 
 Cloned the repository
 Ran npm install
 Created a .env file in the project root containing:
-MONGODB_URI=mongodb+srv://zurieltolibas_db_user:0XcY1nTOLYW7WZT4@campusfoodcluster.7b3hfzu.mongodb.net/
 
 Ran npm start
 Opened http://localhost:3000
