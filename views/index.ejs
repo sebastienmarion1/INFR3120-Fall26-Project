@@ -10,7 +10,7 @@
     <h1><%= title %></h1>
     <%//adapted the original index view for our site. %>
     <p>On this site, students can find information about various food options available on campus.</p>
-    <a href="/food-spots/add">Add New Food Spot</a>
+    <a href="/foodspots/add">Add New Food Spot</a>
 
 
   <div class="container mt-4">
@@ -35,9 +35,9 @@
         <% } else { %>
           <% for (let i = 0; i < foodSpotList.length; i++) { %>
             <tr>
-              <td><%= foodSpotList[i].foodType %></td>
+              <td><%= foodSpotList[i].name %></td>
               <td><%= foodSpotList[i].location %></td>
-              <td><%= foodSpotList[i].typeOfFood %></td>
+              <td><%= foodSpotList[i].foodType %></td>
               <td><%= foodSpotList[i].priceRange %></td>
               <td><%= foodSpotList[i].rating %></td>
             </tr>

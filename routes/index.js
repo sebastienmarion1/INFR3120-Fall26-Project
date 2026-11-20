@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var foodSpotList = require('../models/foodspot');
+var FoodSpot = require('../models/foodspot');
 
 
 /* GET home page. */
